@@ -1,0 +1,5 @@
+# guncon3-linux: https://github.com/leandrolalanne/guncon3-linux
+# Namco GunCon 3 (USB 0b9a:0800): let the logged-in user open it from userspace.
+SUBSYSTEM=="usb", ATTRS{idVendor}=="0b9a", ATTRS{idProduct}=="0800", MODE="0660", TAG+="uaccess"
+# /dev/uinput: let the logged-in user create the virtual mouse (same rule Steam ships).
+KERNEL=="uinput", SUBSYSTEM=="misc", TAG+="uaccess", OPTIONS+="static_node=uinput"
